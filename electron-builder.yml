@@ -1,0 +1,34 @@
+# Empacotamento do app (instalador do Windows). Gerado pelo GitHub Actions.
+appId: br.com.ramos.gestao
+productName: Ramos Gestão
+copyright: Ramos Importação e Comércio
+directories:
+  output: release
+  buildResources: build
+files:
+  - out/**
+  - package.json
+  # o código-fonte do SQLite não é necessário no app (usa o binário pré-compilado)
+  - '!node_modules/better-sqlite3-multiple-ciphers/deps/**'
+  - '!node_modules/better-sqlite3-multiple-ciphers/src/**'
+asarUnpack:
+  - node_modules/better-sqlite3-multiple-ciphers/**
+# O banco usa um módulo nativo N-API com binários prontos para Windows: não precisa recompilar.
+npmRebuild: false
+win:
+  target:
+    - target: nsis
+      arch: [x64]
+    - target: portable
+      arch: [x64]
+nsis:
+  # Instala só para o usuário atual: não pede senha de administrador.
+  oneClick: false
+  perMachine: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: always
+  createStartMenuShortcut: true
+  shortcutName: Ramos Gestão
+  artifactName: Ramos-Gestao-Instalador-${version}.${ext}
+portable:
+  artifactName: Ramos-Gestao-Portatil-${version}.${ext}

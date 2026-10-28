@@ -19,3 +19,4 @@ relatorios/
 .DS_Store
 Thumbs.db
 .vscode/
+*.tsbuildinfo
