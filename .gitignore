@@ -1,0 +1,21 @@
+# Dependências e builds
+node_modules/
+dist/
+out/
+release/
+*.log
+
+# Dados e segredos — nunca versionar
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+.env
+.env.*
+backups/
+relatorios/
+
+# Sistema
+.DS_Store
+Thumbs.db
+.vscode/
